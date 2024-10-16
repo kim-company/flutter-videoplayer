@@ -33,8 +33,7 @@ class FlutterAVPlayer: NSObject, FlutterPlatformView,
             let vc =
                 appDelegate.window.rootViewController as! FlutterViewController
             let lookUpKey = vc.lookupKey(forAsset: filePath as! String)
-            if let path = Bundle.main.path(forResource: lookUpKey, ofType: nil)
-            {
+            if let path = Bundle.main.path(forResource: lookUpKey, ofType: nil) {
                 let item = AVPlayerItem(url: URL(fileURLWithPath: path))
                 player.replaceCurrentItem(with: item)
             } else {
@@ -59,8 +58,10 @@ class FlutterAVPlayer: NSObject, FlutterPlatformView,
             playerLayer: playerLayer)
 
         if #available(iOS 14.2, *) {
-            pictureInPictureController
-                .canStartPictureInPictureAutomaticallyFromInline = true
+            if pictureInPictureController != nil {
+                pictureInPictureController
+                    .canStartPictureInPictureAutomaticallyFromInline = true
+            }
         }
 
         player.play()
