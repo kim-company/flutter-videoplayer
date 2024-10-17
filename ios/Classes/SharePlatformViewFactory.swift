@@ -25,6 +25,7 @@ class SharePlatformViewFactory: NSObject, FlutterPlatformViewFactory {
             }
             else if vc == "FlutterAVPlayerView" {
                 let pickerView = FlutterAVPlayer(frame: frame, viewIdentifier: viewId, arguments: argumens, binaryMessenger: _messenger)
+                
                 return pickerView
             }
         }
